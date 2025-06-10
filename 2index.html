@@ -1,0 +1,110 @@
+ <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Despesas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        input {
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora de Despesas Mensais</h1>
+
+    <!-- Campo para digitar o salário líquido -->
+    <label for="salario">Salário Líquido (R$):</label>
+    <input type="number" id="salario" placeholder="Digite seu salário líquido">
+
+    <!-- Campos para os gastos fixos -->
+    <label for="gastoGas">Gás (R$):</label>
+    <input type="number" id="gastoGas">
+
+    <label for="gastoLuz">Luz (R$):</label>
+    <input type="number" id="gastoLuz">
+
+    <label for="gastoTelefone">Telefone (R$):</label>
+    <input type="number" id="gastoTelefone">
+
+    <label for="gastoAluguel">Aluguel (R$):</label>
+    <input type="number" id="gastoAluguel">
+
+    <label for="gastoCursinho">Cursinho/Escola (R$):</label>
+    <input type="number" id="gastoCursinho">
+
+    <label for="gastoFeira">Feira (R$):</label>
+    <input type="number" id="gastoFeira">
+
+    <!-- Botão para calcular os dados -->
+    <button onclick="calcularDespesas()">Calcular</button>
+
+    <!-- Área onde o resultado será exibido -->
+    <div id="resultado"></div>
+
+    <script>
+        // Função que faz os cálculos quando o botão é clicado
+        function calcularDespesas() {
+            // Coleta os valores dos campos e converte para número
+            const salario = Number(document.getElementById('salario').value);
+            const gas = Number(document.getElementById('gastoGas').value);
+            const luz = Number(document.getElementById('gastoLuz').value);
+            const telefone = Number(document.getElementById('gastoTelefone').value);
+            const aluguel = Number(document.getElementById('gastoAluguel').value);
+            const cursinho = Number(document.getElementById('gastoCursinho').value);
+            const feira = Number(document.getElementById('gastoFeira').value);
+
+            // Soma todas as despesas fixas e variáveis
+            const totalDespesas = gas + luz + telefone + aluguel + cursinho + feira;
+
+            // Calcula 10% do salário líquido para aplicação
+            const aplicacao = salario * 0.10;
+
+            // Soma total das despesas mais a aplicação
+            const totalComAplicacao = totalDespesas + aplicacao;
+
+            // Calcula o saldo restante
+            const restante = salario - totalComAplicacao;
+
+            // Monta o resultado em HTML
+            document.getElementById('resultado').innerHTML = `
+                <h2>Resumo:</h2>
+                <p><strong>Despesas totais:</strong> R$ ${totalDespesas.toFixed(2)}</p>
+                <p><strong>Aplicação (10%):</strong> R$ ${aplicacao.toFixed(2)}</p>
+                <p><strong>Total gasto:</strong> R$ ${totalComAplicacao.toFixed(2)}</p>
+                <p><strong>Saldo restante:</strong> R$ ${restante.toFixed(2)}</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>

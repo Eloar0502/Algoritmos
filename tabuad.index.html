@@ -1,0 +1,59 @@
+ <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabuada de Multiplicação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .tabuada {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: fit-content;
+        }
+        .tabuada h2 {
+            margin-top: 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tabuada de Multiplicação (1 ao 10)</h1>
+    <div id="resultado"></div>
+
+    <script>
+        // Obtém a div onde as tabuadas serão exibidas
+        const resultado = document.getElementById('resultado');
+
+        // Loop externo: para cada número de 1 a 10
+        for (let i = 1; i <= 10; i++) {
+            // Cria uma div para a tabuada atual
+            const tabuadaDiv = document.createElement('div');
+            tabuadaDiv.className = 'tabuada';
+
+            // Adiciona o título da tabuada
+            const titulo = document.createElement('h2');
+            titulo.textContent = `Tabuada do ${i}`;
+            tabuadaDiv.appendChild(titulo);
+
+            // Loop interno: multiplica o número atual por 1 até 10
+            for (let j = 1; j <= 10; j++) {
+                const linha = document.createElement('p');
+                linha.textContent = `${i} x ${j} = ${i * j}`;
+                tabuadaDiv.appendChild(linha);
+            }
+
+            // Adiciona a tabuada ao resultado
+            resultado.appendChild(tabuadaDiv);
+        }
+    </script>
+
+</body>
+</html>
+
+  
+    
